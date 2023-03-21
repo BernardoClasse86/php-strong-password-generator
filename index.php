@@ -1,4 +1,7 @@
 <?php
+
+include 'functions.php';
+
 if (isset($_GET['submit'])) {
 
     $password_length = $_GET['length'];
@@ -10,25 +13,13 @@ if (isset($_GET['submit'])) {
         </div>
         <?php
     } else {
-        $password = generatePassword($password_length);
+        $your_password = generatePassword($password_length);
         ?>
         <div class="container py-3">
-            <p>your password is: <?= $password ?></p>
+            <p>your password is: <?= $your_password ?></p>
         </div>
         <?php
-    }  
-}
-
-function generatePassword($password_length) {
-
-    $numbers = '0123456789';
-    $characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    $symbols = '!?@#$%*&+=';
-    $total = $numbers . $characters . $symbols;
-    $shuffled_total = str_shuffle($total);
-    $password = substr($shuffled_total, 0, $password_length);
-    
-    return $password;
+    }
 }
 ?>
 
@@ -46,19 +37,15 @@ function generatePassword($password_length) {
     <div class="container py-3">
 
         <form class="row g-3" method="get">
-
             <div class="col-auto">
                 <p>Password Length:</p>
             </div>
-
             <div class="col-auto">
                 <input type="number" class="form-control" name="length">
             </div>
-
             <div class="col-auto">
                 <button type="submit" name="submit" class="btn btn-primary mb-3">Generate password</button>
             </div>
-
         </form>
 
     </div>

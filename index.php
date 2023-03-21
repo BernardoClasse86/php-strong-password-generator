@@ -1,7 +1,7 @@
 <?php
-if (isset($_POST['submit'])) {
+if (isset($_GET['submit'])) {
 
-    $password_length = $_POST['length'];
+    $password_length = $_GET['length'];
 
     if (empty($password_length) || $password_length <= 0 || $password_length >= 72) {
         ?>
@@ -45,7 +45,7 @@ function generatePassword($password_length) {
 
     <div class="container py-3">
 
-        <form class="row g-3" method="post">
+        <form class="row g-3" method="get">
 
             <div class="col-auto">
                 <p>Password Length:</p>

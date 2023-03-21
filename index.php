@@ -3,19 +3,19 @@
 include 'functions.php';
 
 if (isset($_GET['submit'])) {
-
+    
     $password_length = $_GET['length'];
-
-    if (empty($password_length) || $password_length <= 0 || $password_length >= 72) {
+    
+    if (empty($password_length) || $password_length <= 7 || $password_length >= 25) {
         ?>
-        <div class="container py-3">
-            <p>cant generate password</p>
+        <div class="container py-3 mt-3 bg-danger text-light border border-3 border-danger-subtle">
+            <p>cant generate password: please enter a number between 8 and 24</p>
         </div>
         <?php
     } else {
         $your_password = generatePassword($password_length);
         ?>
-        <div class="container py-3">
+        <div class="container py-3 mt-3 bg-success text-light border border-3 border-success-subtle">
             <p>your password is: <?= $your_password ?></p>
         </div>
         <?php
@@ -34,11 +34,11 @@ if (isset($_GET['submit'])) {
 </head>
 <body>
 
-    <div class="container py-3">
+    <div class="container py-3 mt-3 bg-primary-subtle border border-2 border-primary">
 
-        <form class="row g-3" method="get">
+        <form class="row g-3" method="get" >
             <div class="col-auto">
-                <p>Password Length:</p>
+                <p class="text-primary">Password Length:</p>
             </div>
             <div class="col-auto">
                 <input type="number" class="form-control" name="length">
